@@ -3,6 +3,8 @@ layout: post
 title: "从外部记忆到快慢学习：我如何理解持续学习 Agent 的下一步"
 ---
 
+[English version]({{ '/2026/06/04/continuous-learning-agent-en.html' | relative_url }})
+
 
 
 最近我连续读了几篇关于持续学习、Agent 记忆和模型适应的论文。它们讨论的对象放在一起看会形成一条很有意思的线索：如果我们希望 AI Agent 不只是一次性完成任务，而是在长期使用中不断和用户磨合、积累经验、修正行为，那么它到底应该怎样“学习”？我最开始关注的是 XSkill: Continual Learning from Experience and Skills in Multimodal Agents。这篇论文代表了现在agent记忆一个比较乐观的方向：不更新模型参数，而是让 Agent 从过去轨迹中提炼经验和技能，存到外部知识库中，之后在新任务里检索、适配和调用。后来我又读到 Useful Memories Become Faulty When Continuously Updated by LLMs，这篇文章几乎是给前一种路线泼了一盆必要的冷水：当前 LLM 并不是可靠的记忆巩固器，持续把经验抽象成记忆，可能使记忆越来越坏，甚至低于没有记忆的基线。中间还有一篇看似不直接属于 Agent memory 方向、但对我启发很大的论文：Learning, Fast and Slow: Towards LLMs That Adapt Continually。这篇论文主要讨论 LLM 后训练阶段的快慢学习：模型参数是慢权重，prompt/context 是快权重，二者应该在训练过程中共同优化。它和 XSkill、Faulty Memory 的研究对象不完全一样，但它给了我一个很重要的概念框架：学习不一定只发生在模型权重里，也可以发生在模型外围的上下文、记忆、工具配置和运行框架中。

@@ -128,8 +128,9 @@ title: Blog
     <h1>Blog</h1>
     <p class="muted">Essays, notes, and learning records.</p>
     <ul class="post-list">
-      {% if site.posts.size > 0 %}
-        {% for post in site.posts %}
+      {% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+      {% if visible_posts.size > 0 %}
+        {% for post in visible_posts %}
           <li class="post">
             <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
             <div class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
