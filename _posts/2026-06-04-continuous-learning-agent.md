@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "从外部记忆到快慢学习：我如何理解持续学习 Agent 的下一步"
+hidden: true
 ---
 
 [English version]({{ '/2026/06/04/continuous-learning-agent-en.html' | relative_url }})
