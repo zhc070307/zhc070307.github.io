@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | Zhang Hechen</title>
+  <style>
+    :root {
+      --text: #222222;
+      --muted: #666666;
+      --link: #2a6ebb;
+      --border: #dddddd;
+      --background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    .nav {
+      width: min(1040px, calc(100% - 40px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-title {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    article {
+      width: min(760px, calc(100% - 40px));
+      margin: 46px auto 64px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .date {
+      margin-bottom: 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul,
+    ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+    }
+
+    blockquote {
+      margin: 0 0 16px;
+      padding-left: 16px;
+      color: var(--muted);
+      border-left: 4px solid var(--border);
+    }
+
+    code {
+      padding: 2px 4px;
+      background: #f6f8fa;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      overflow-x: auto;
+      padding: 14px 16px;
+      background: #f6f8fa;
+      border-radius: 6px;
+    }
+
+    pre code {
+      padding: 0;
+      background: transparent;
+    }
+
+    .footer {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a class="site-title" href="{{ '/' | relative_url }}">张赫宸 / Zhang Hechen</a>
+    </div>
+  </header>
+
+  <article>
+    <h1>{{ page.title }}</h1>
+    <div class="date">{{ page.date | date: "%Y-%m-%d" }}</div>
+    {{ content }}
+  </article>
+
+  <footer class="footer">
+    <a href="{{ '/blog.html' | relative_url }}">Back to blog</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,148 @@
+---
+title: Blog
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Zhang Hechen</title>
+  <style>
+    :root {
+      --text: #222222;
+      --muted: #666666;
+      --link: #2a6ebb;
+      --border: #dddddd;
+      --background: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    .nav {
+      width: min(1040px, calc(100% - 40px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .site-title {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .page {
+      width: min(760px, calc(100% - 40px));
+      margin: 46px auto 64px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .post-list {
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .post {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-title {
+      display: inline-block;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .post-meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .empty {
+      padding: 18px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer {
+      width: min(760px, calc(100% - 40px));
+      margin: 0 auto 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav">
+      <a class="site-title" href="index.html">张赫宸 / Zhang Hechen</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1>Blog</h1>
+    <p class="muted">Essays, notes, and learning records.</p>
+    <ul class="post-list">
+      {% if site.posts.size > 0 %}
+        {% for post in site.posts %}
+          <li class="post">
+            <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <div class="post-meta">{{ post.date | date: "%Y-%m-%d" }}</div>
+          </li>
+        {% endfor %}
+      {% else %}
+      <li class="empty">No posts yet.</li>
+      {% endif %}
+    </ul>
+  </main>
+
+  <footer class="footer">
+    <a href="index.html">Back to home</a>
+  </footer>
+</body>
+</html>
