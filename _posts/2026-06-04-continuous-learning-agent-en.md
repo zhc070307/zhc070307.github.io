@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "From External Memory to Fast and Slow Learning: How I Understand the Next Step for Continual Learning Agents"
-hidden: true
+
 ---
 
 [中文版]({{ '/2026/06/04/continuous-learning-agent.html' | relative_url }})
