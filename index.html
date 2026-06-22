@@ -40,8 +40,8 @@
     }
 
     .site-header {
-      border-bottom: 1px solid var(--border);
-      background: #ffffff;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero-bg.jpg') center/cover;
+      background-attachment: fixed;
     }
 
     .nav {
@@ -55,16 +55,37 @@
     }
 
     .site-title {
-      color: var(--text);
+      color: #ffffff;
       font-size: 18px;
       font-weight: 700;
       white-space: nowrap;
     }
 
     .nav-link {
-      color: var(--text);
+      color: #ffffff;
       font-size: 15px;
       white-space: nowrap;
+    }
+
+    .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/hero-bg.jpg') center/cover;
+      background-attachment: fixed;
+      padding: 120px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 10px;
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .hero-content p {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 300;
     }
 
     .layout {
@@ -157,6 +178,23 @@
         padding: 16px 0;
       }
 
+      .hero-section {
+        padding: 80px 20px;
+        background-attachment: scroll;
+      }
+
+      .site-header {
+        background-attachment: scroll;
+      }
+
+      .hero-content h1 {
+        font-size: 32px;
+      }
+
+      .hero-content p {
+        font-size: 16px;
+      }
+
       .layout {
         grid-template-columns: 1fr;
         gap: 34px;
@@ -172,6 +210,13 @@
       <a class="nav-link" href="blog.html">Blog</a>
     </div>
   </header>
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>张赫宸</h1>
+      <p>Zhang Hechen</p>
+    </div>
+  </div>
 
   <main class="layout">
     <aside class="profile" aria-label="Profile">
