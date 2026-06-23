@@ -9,11 +9,12 @@ title: Blog
   <title>Blog | Zhang Hechen</title>
   <style>
     :root {
-      --text: #222222;
-      --muted: #666666;
-      --link: #2a6ebb;
-      --border: #dddddd;
-      --background: #ffffff;
+      --text: #202522;
+      --muted: #626c66;
+      --link: #1f6fb2;
+      --border: #d9e0dc;
+      --background: #f7f9f7;
+      --surface: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
 
@@ -40,33 +41,48 @@ title: Blog
 
     .site-header {
       border-bottom: 1px solid var(--border);
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.92);
     }
 
     .nav {
       width: min(1040px, calc(100% - 40px));
-      min-height: 58px;
+      min-height: 70px;
       margin: 0 auto;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .site-title {
+    .site-mark {
       color: var(--text);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      color: var(--text);
+      font-size: 15px;
       white-space: nowrap;
     }
 
     .page {
       width: min(760px, calc(100% - 40px));
-      margin: 46px auto 64px;
+      margin: 56px auto 72px;
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: 30px;
-      line-height: 1.3;
+      margin: 0 0 12px;
+      font-size: 40px;
+      line-height: 1.15;
       letter-spacing: 0;
     }
 
@@ -76,23 +92,33 @@ title: Blog
 
     .muted {
       color: var(--muted);
+      font-size: 18px;
     }
 
     .post-list {
-      margin: 28px 0 0;
+      margin: 34px 0 0;
       padding: 0;
       list-style: none;
-      border-top: 1px solid var(--border);
     }
 
     .post {
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 20px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 14px 32px rgba(28, 40, 34, 0.06);
+    }
+
+    .post + .post,
+    .post + .empty,
+    .empty + .post {
+      margin-top: 14px;
     }
 
     .post-title {
       display: inline-block;
-      font-size: 20px;
+      color: var(--text);
+      font-size: 21px;
       font-weight: 700;
       line-height: 1.35;
     }
@@ -104,9 +130,11 @@ title: Blog
     }
 
     .empty {
-      padding: 18px 0;
+      padding: 20px 22px;
       color: var(--muted);
-      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
     }
 
     .footer {
@@ -115,13 +143,39 @@ title: Blog
       color: var(--muted);
       font-size: 14px;
     }
+
+    @media (max-width: 620px) {
+      .nav {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .page {
+        margin-top: 38px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .muted {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="nav">
-      <a class="site-title" href="index.html">张赫宸 / Zhang Hechen</a>
-    </div>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="site-mark" href="index.html" aria-label="Home">HC</a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="blog.html">Blog</a>
+      </div>
+    </nav>
   </header>
 
   <main class="page">
@@ -145,5 +199,34 @@ title: Blog
   <footer class="footer">
     <a href="index.html">Back to home</a>
   </footer>
+  <script>
+    (function () {
+      var postList = document.querySelector(".post-list");
+      var rawTemplate = postList && (
+        postList.textContent.indexOf("visible_posts") !== -1 ||
+        postList.textContent.indexOf("post.title") !== -1
+      );
+      var bodyFirstText = document.body.firstChild &&
+        document.body.firstChild.nodeType === Node.TEXT_NODE &&
+        document.body.firstChild.nodeValue.indexOf("title: Blog") !== -1;
+
+      if (!rawTemplate && !bodyFirstText) {
+        return;
+      }
+
+      if (bodyFirstText) {
+        document.body.firstChild.remove();
+      }
+
+      postList.innerHTML = [
+        '<li class="post">',
+        '<a class="post-title" href="2026/06/04/continuous-learning-agent-en.html">',
+        'From External Memory to Fast and Slow Learning: How I Understand the Next Step for Continual Learning Agents',
+        '</a>',
+        '<div class="post-meta">2026-06-04</div>',
+        '</li>'
+      ].join("");
+    })();
+  </script>
 </body>
 </html>
